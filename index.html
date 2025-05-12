@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<center>
+<img  src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" ><br><br>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Voice Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+   
+    <input type="text" id="searchBox" placeholder="Speak or type here" size="40">
+    <button onclick="startVoiceSearch()">🎤</button>
+    <button onclick="searchGoogle()">🔍</button>
+
+    <script>
+        function startVoiceSearch() {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US';
+            recognition.start();
+
+            recognition.onresult = function(event) {
+                document.getElementById('searchBox').value = event.results[0][0].transcript;
+            };
+        }
+
+        function searchGoogle() {
+            const query = document.getElementById('searchBox').value;
+            if (query) {
+                window.location.href = https://www.google.com/search?q=${encodeURIComponent(query)};
+            }
+        }
+    </script>
+</body>
+</html>
